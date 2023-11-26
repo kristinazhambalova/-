@@ -1,20 +1,7 @@
-﻿#include <iostream>
+#include <iostream>
 #include <cmath>
 
-int main() {
-    double M = 0.3;
-    double e = 0.8;
-
-    double initial_guess = M; 
-    double tolerance = 1e-8; 
-    int max_iterations = 1000;
-
-    double result_fixed_point = fixedPointIteration(M, e, initial_guess, tolerance, max_iterations);
-    double result_bisection = bisectionMethod(M, e, 0, 2 * M, tolerance, max_iterations);
-    double result_golden_section = goldenSectionMethod(M, e, 0, 2 * M, tolerance, max_iterations);
-    double result_newton = newtonMethod(M, e, initial_guess, tolerance, max_iterations);
-
-    //Метод итераций
+    //метод итераций
     double fixedPointIteration(double M, double e, double initial_guess, double tolerance, int max_iterations) {
         double E = initial_guess;
         for (int i = 0; i < max_iterations; ++i) {
@@ -27,7 +14,7 @@ int main() {
         return -1;
     }
 
-    //Метод половинного деления
+    //метод половинного деления
     double bisectionMethod(double M, double e, double a, double b, double tolerance, int max_iterations) {
         double E_a = a;
         double E_b = b;
@@ -50,7 +37,7 @@ int main() {
         return -1;
     }
 
-    //Метод золотого сечения
+    //метод золотого сечения
     double goldenSectionMethod(double M, double e, double a, double b, double tolerance, int max_iterations) {
         const double golden_ratio = (1 + sqrt(5)) / 2;
         double E_a = a;
@@ -77,7 +64,7 @@ int main() {
         return -1;
     }
 
-    //Метод Ньютона
+    //метод Ньютона
     double newtonMethod(double M, double e, double initial_guess, double tolerance, int max_iterations) {
         double E = initial_guess;
         for (int i = 0; i < max_iterations; ++i) {
@@ -92,6 +79,20 @@ int main() {
         return -1;
     }
 
+    int main() {
+        setlocale(LC_ALL, "RU"); //кодировка на русский
+        double M = 0.3;
+        double e = 0.8;
+
+        double initial_guess = M;
+        double tolerance = 1e-8;
+        int max_iterations = 1000;
+
+        double result_fixed_point = fixedPointIteration(M, e, initial_guess, tolerance, max_iterations);
+        double result_bisection = bisectionMethod(M, e, 0, 2 * M, tolerance, max_iterations);
+        double result_golden_section = goldenSectionMethod(M, e, 0, 2 * M, tolerance, max_iterations);
+        double result_newton = newtonMethod(M, e, initial_guess, tolerance, max_iterations);
+//результаты
     std::cout << "Метод итераций: " << result_fixed_point << std::endl;
     std::cout << "Метод половинного деления: " << result_bisection << std::endl;
     std::cout << "Метод золотого сечения: " << result_golden_section << std::endl;
