@@ -81,7 +81,7 @@
 
     int main() {
         setlocale(LC_ALL, "RU"); //кодировка на русский
-        double M = 0.3;
+        double M = 0.642 * (10^24);
         double e = 0.8;
 
         double initial_guess = M;
